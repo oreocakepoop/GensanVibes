@@ -1,8 +1,8 @@
 
 import React from 'react';
-import PostCreatorSkeleton from './PostCreatorSkeleton';
-import PostSkeleton from './PostSkeleton';
-import SidebarSkeleton from './SidebarSkeleton';
+import PostCreatorSkeleton from './PostCreatorSkeleton.tsx';
+import PostSkeleton from './PostSkeleton.tsx';
+import SidebarSkeleton from './SidebarSkeleton.tsx';
 
 const AppSkeleton: React.FC = () => {
   return (

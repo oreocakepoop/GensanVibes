@@ -1,11 +1,11 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { db } from '../firebase';
+import { db } from '../firebase.ts';
 import { ref, update } from 'firebase/database';
-import type { UserProfile } from '../types';
+import type { UserProfile } from '../types.ts';
 import { motion, Variants } from 'framer-motion';
-import { iconUrls } from '../data/icons';
+import { iconUrls } from '../data/icons.ts';
 
 interface EditProfileModalProps {
   isOpen: boolean;

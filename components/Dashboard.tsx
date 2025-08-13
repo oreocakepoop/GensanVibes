@@ -1,14 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
-import { auth, db } from '../firebase';
+import { auth, db } from '../firebase.ts';
 import { ref, onValue, query } from 'firebase/database';
-import PostCreator from './PostCreator';
-import PostComponent from './Post';
-import PostSkeleton from './PostSkeleton';
-import { Post, PostType, View } from '../types';
-import PostCreatorSkeleton from './PostCreatorSkeleton';
+import PostCreator from './PostCreator.tsx';
+import PostComponent from './Post.tsx';
+import PostSkeleton from './PostSkeleton.tsx';
+import { Post, PostType, View } from '../types.ts';
+import PostCreatorSkeleton from './PostCreatorSkeleton.tsx';
 import { motion } from 'framer-motion';
-import BarangayFeedHeader from './BarangayFeedHeader';
+import BarangayFeedHeader from './BarangayFeedHeader.tsx';
 
 interface DashboardProps {
     onSelectPostType: (postType: PostType) => void;

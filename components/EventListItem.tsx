@@ -1,9 +1,9 @@
 
 import React from 'react';
-import type { KaganapanEvent, View } from '../types';
-import Multiavatar from './Multiavatar';
+import type { KaganapanEvent, View } from '../types.ts';
+import Multiavatar from './Multiavatar.tsx';
 import { motion } from 'framer-motion';
-import { iconUrls } from '../data/icons';
+import { iconUrls } from '../data/icons.ts';
 
 interface EventListItemProps {
   event: KaganapanEvent;

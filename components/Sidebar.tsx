@@ -1,6 +1,6 @@
 
 import React from 'react';
-import UserSuggestions from './UserSuggestions';
+import UserSuggestions from './UserSuggestions.tsx';
 
 const Sidebar: React.FC = () => {
   return (

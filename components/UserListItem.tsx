@@ -1,8 +1,8 @@
 
 
 import React from 'react';
-import { useUserProfile, useFollow } from '../hooks/useFollow';
-import AvatarWithBorder from './AvatarWithBorder';
+import { useUserProfile, useFollow } from '../hooks/useFollow.ts';
+import AvatarWithBorder from './AvatarWithBorder.tsx';
 import { motion } from 'framer-motion';
 
 export const UserListItemSkeleton: React.FC = () => {

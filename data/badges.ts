@@ -1,4 +1,4 @@
-import type { Badge } from '../types';
+import type { Badge } from '../types.ts';
 
 export const badges: Badge[] = [
     {

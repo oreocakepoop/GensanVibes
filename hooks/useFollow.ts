@@ -1,11 +1,12 @@
 
+
 import { useState, useEffect, useCallback } from 'react';
-import { auth, db } from '../firebase';
+import { auth, db } from '../firebase.ts';
 import { ref, onValue, runTransaction, set, off, push, get } from 'firebase/database';
 import { User } from 'firebase/auth';
-import type { UserProfile, Notification } from '../types';
-import { NotificationType } from '../types';
-import { addVibePoints, VibePoints } from '../data/gamification';
+import type { UserProfile, Notification } from '../types.ts';
+import { NotificationType } from '../types.ts';
+import { addVibePoints, VibePoints } from '../data/gamification.ts';
 
 // Badge Awarding Logic
 const checkAndAwardBadge = async (userId: string, badgeId: string) => {

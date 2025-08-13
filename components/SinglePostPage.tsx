@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { usePost } from '../hooks/usePost';
-import PostComponent from './Post';
-import PostSkeleton from './PostSkeleton';
-import type { Post, View } from '../types';
+import { usePost } from '../hooks/usePost.ts';
+import PostComponent from './Post.tsx';
+import PostSkeleton from './PostSkeleton.tsx';
+import type { Post, View } from '../types.ts';
 
 interface SinglePostPageProps {
   postId: string;

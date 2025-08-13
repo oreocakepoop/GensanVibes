@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import type { Badge } from '../types';
-import { iconUrls } from '../data/icons';
+import type { Badge } from '../types.ts';
+import { iconUrls } from '../data/icons.ts';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface BadgeIconProps {

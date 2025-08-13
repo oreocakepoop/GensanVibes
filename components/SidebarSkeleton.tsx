@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { UserListItemSkeleton } from './UserListItem';
+import { UserListItemSkeleton } from './UserListItem.tsx';
 
 const SidebarSkeleton: React.FC = () => {
     return (

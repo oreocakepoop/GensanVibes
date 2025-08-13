@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { locations } from '../data/locations';
-import type { View } from '../types';
+import { locations } from '../data/locations.ts';
+import type { View } from '../types.ts';
 import { motion } from 'framer-motion';
 
 interface BarangayDirectoryProps {

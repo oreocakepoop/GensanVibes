@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import { auth, db } from '../firebase';
+import { auth, db } from '../firebase.ts';
 import { ref, set, push } from 'firebase/database';
-import type { KaganapanEvent, View } from '../types';
-import { useUserProfile } from '../hooks/useFollow';
+import type { KaganapanEvent, View } from '../types.ts';
+import { useUserProfile } from '../hooks/useFollow.ts';
 import { motion, Variants } from 'framer-motion';
-import { iconUrls } from '../data/icons';
+import { iconUrls } from '../data/icons.ts';
 
 interface EventCreationModalProps {
   isOpen: boolean;

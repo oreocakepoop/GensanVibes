@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { db, auth } from '../firebase';
+import { db, auth } from '../firebase.ts';
 import { ref, onValue, runTransaction, set, get } from 'firebase/database';
-import type { KaganapanEvent, View } from '../types';
-import PostSkeleton from './PostSkeleton';
-import Multiavatar from './Multiavatar';
+import type { KaganapanEvent, View } from '../types.ts';
+import PostSkeleton from './PostSkeleton.tsx';
+import Multiavatar from './Multiavatar.tsx';
 import { motion } from 'framer-motion';
-import { iconUrls } from '../data/icons';
+import { iconUrls } from '../data/icons.ts';
 
 // Badge Awarding Logic
 const checkAndAwardBadge = async (userId: string, badgeId: string) => {
@@ -62,13 +62,13 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ eventId, onNavigate }
     return () => unsubscribe();
   }, [eventId, currentUser]);
 
-  const toggleAttendance = async () => {
+  const handleAttendToggle = async () => {
     if (!currentUser || !event || isProcessing) return;
+
     setIsProcessing(true);
+    const eventRef = ref(db, `events/${eventId}`);
     const wasAttending = isAttending;
 
-    const eventRef = ref(db, `events/${event.id}`);
-    
     try {
         await runTransaction(eventRef, (currentEvent) => {
             if (currentEvent) {
@@ -89,23 +89,26 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ eventId, onNavigate }
         if (!wasAttending) {
             await checkEventBadges(currentUser.uid);
         }
-    } catch(error) {
-        console.error("Failed to update attendance", error);
+    } catch (error) {
+        console.error("Failed to toggle attendance", error);
     } finally {
         setIsProcessing(false);
     }
   };
 
-
   if (loading) {
-    return <div className="w-full bg-brand-surface border-b border-l border-r border-brand-border rounded-xl"><PostSkeleton /></div>;
+    return (
+      <div className="w-full bg-brand-surface border-b border-l border-r border-brand-border rounded-xl">
+        <PostSkeleton />
+      </div>
+    );
   }
 
   if (!event) {
     return (
-      <div className="w-full bg-brand-surface border rounded-xl p-8 text-center">
+      <div className="w-full bg-brand-surface border-b border-l border-r border-brand-border rounded-xl p-8 text-center">
         <h2 className="text-xl font-bold font-serif text-brand-text">Event not found</h2>
-        <p className="text-brand-text-secondary mt-2">This event may have been canceled or the link is incorrect.</p>
+        <p className="text-brand-text-secondary mt-2">This event may have been cancelled or the link is incorrect.</p>
         <button
           onClick={() => onNavigate({ type: 'events' })}
           className="mt-4 px-4 py-2 bg-brand-accent text-brand-surface font-bold rounded-lg text-sm hover:opacity-90 transition-colors"
@@ -115,64 +118,71 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ eventId, onNavigate }
       </div>
     );
   }
-  
+
   const eventDate = new Date(event.eventDate);
-  const formattedDate = eventDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-  const formattedTime = eventDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+  const formattedDate = eventDate.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+  const formattedTime = eventDate.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  });
+  const avatarSeed = event.creatorAvatarStyle || event.creatorId;
 
   return (
-    <div className="w-full bg-brand-surface border-b border-l border-r border-brand-border rounded-xl overflow-hidden">
-        <div className="p-6 border-b border-brand-border bg-brand-bg/50">
-            <p className="text-base font-bold text-brand-accent">{formattedDate}</p>
-            <h1 className="text-4xl font-bold text-brand-text font-serif mt-1">{event.title}</h1>
-            <div className="flex items-center gap-2 mt-4 cursor-pointer" onClick={() => onNavigate({type: 'profile', userId: event.creatorId })}>
-                <Multiavatar seed={event.creatorAvatarStyle || event.creatorId} className="w-8 h-8 rounded-full" />
-                <span className="text-sm text-brand-text-secondary">
-                Hosted by <strong className="text-brand-text font-semibold hover:underline">{event.creatorUsername}</strong>
-                </span>
+    <div className="w-full bg-brand-surface border-b border-l border-r border-brand-border rounded-xl">
+      <div className="p-6 border-b border-brand-border">
+          <p className="text-base font-bold text-brand-accent">{formattedDate}</p>
+          <h1 className="text-4xl font-bold text-brand-text font-serif mt-2">{event.title}</h1>
+          
+          <button onClick={() => onNavigate({ type: 'profile', userId: event.creatorId })} className="flex items-center gap-3 mt-4 group">
+            <Multiavatar seed={avatarSeed} className="w-8 h-8 rounded-full" />
+            <span className="text-sm text-brand-text-secondary">
+              Hosted by <strong className="text-brand-text font-semibold group-hover:underline">{event.creatorUsername}</strong>
+            </span>
+          </button>
+      </div>
+      
+      <div className="p-6 space-y-4">
+        <div className="text-base text-brand-text leading-relaxed">
+            {event.description.split('\n').filter(p => p.trim()).map((para, i) => <p key={i}>{para}</p>)}
+        </div>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-base text-brand-text-secondary pt-4 border-t border-brand-border">
+            <div className="flex items-center gap-2">
+              <img src={iconUrls.pin} alt="Location" className="w-5 h-5 opacity-80" />
+              <span className="font-semibold">{event.location}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <img src={iconUrls.clock} alt="Time" className="w-5 h-5 opacity-80" />
+              <span className="font-semibold">{formattedTime}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <img src={iconUrls.group} alt="Attendees" className="w-5 h-5 opacity-80" />
+              <span className="font-semibold">{event.attendeesCount} attending</span>
             </div>
         </div>
-
-        <div className="p-6 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="space-y-4">
-                     <div className="flex items-center gap-3">
-                        <img src={iconUrls.clock} alt="Time" className="w-6 h-6 opacity-80" />
-                        <span className="text-lg font-semibold text-brand-text">{formattedTime}</span>
-                    </div>
-                     <div className="flex items-center gap-3">
-                        <img src={iconUrls.pin} alt="Location" className="w-6 h-6 opacity-80" />
-                        <span className="text-lg font-semibold text-brand-text">{event.location}</span>
-                    </div>
-                </div>
-                <button 
-                    onClick={toggleAttendance}
-                    disabled={!currentUser || isProcessing}
-                    className={`px-6 py-3 font-bold rounded-lg text-base w-full sm:w-auto disabled:opacity-50
-                        ${isAttending 
-                            ? 'bg-brand-subtle text-brand-text hover:bg-brand-border transition-colors' 
-                            : 'bg-brand-accent text-brand-surface hover:opacity-90 transition-opacity'}`}
-                >
-                    {isProcessing ? '...' : (isAttending ? "You're Going!" : "I'm Going")}
-                </button>
-            </div>
-
-            <div>
-                <h3 className="font-bold text-brand-text mb-2">About this Event</h3>
-                <p className="text-brand-text leading-relaxed whitespace-pre-wrap">{event.description}</p>
-            </div>
-            
-             <div>
-                <div className="flex items-center gap-2 mb-3">
-                    <img src={iconUrls.group} alt="Attendees" className="w-5 h-5 opacity-80" />
-                    <h3 className="font-bold text-brand-text">
-                        {event.attendeesCount.toLocaleString()} {event.attendeesCount === 1 ? 'person' : 'people'} going
-                    </h3>
-                </div>
-                {/* Could map attendee avatars here in the future */}
-            </div>
-
+      </div>
+      
+      {currentUser && (
+        <div className="p-6 border-t border-brand-border">
+          <motion.button
+            onClick={handleAttendToggle}
+            disabled={isProcessing}
+            whileTap={{ scale: 0.95 }}
+            className={`w-full font-bold py-3 px-4 rounded-lg text-base transition-all disabled:opacity-50 ${
+                isAttending
+                ? 'bg-brand-border text-brand-text-secondary hover:bg-brand-subtle'
+                : 'bg-brand-accent text-brand-surface hover:opacity-90'
+            }`}
+          >
+            {isProcessing ? '...' : (isAttending ? "I can't make it" : 'I will attend!')}
+          </motion.button>
         </div>
+      )}
     </div>
   );
 };

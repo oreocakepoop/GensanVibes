@@ -1,13 +1,13 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { db } from '../firebase';
+import { db } from '../firebase.ts';
 import { ref, query, orderByChild, onValue } from 'firebase/database';
-import type { KaganapanEvent, View } from '../types';
-import EventListItem from './EventListItem';
-import PostSkeleton from './PostSkeleton';
+import type { KaganapanEvent, View } from '../types.ts';
+import EventListItem from './EventListItem.tsx';
+import PostSkeleton from './PostSkeleton.tsx';
 import { motion } from 'framer-motion';
-import { iconUrls } from '../data/icons';
+import { iconUrls } from '../data/icons.ts';
 
 interface EventsPageProps {
   onNavigate: (view: View) => void;

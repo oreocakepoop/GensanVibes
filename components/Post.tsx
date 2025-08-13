@@ -1,17 +1,17 @@
 
 
 import React, { useState, useEffect, useRef } from 'react';
-import type { Post, View, Notification } from '../types';
-import { PostType, NotificationType } from '../types';
-import { auth, db } from '../firebase';
+import type { Post, View, Notification } from '../types.ts';
+import { PostType, NotificationType } from '../types.ts';
+import { auth, db } from '../firebase.ts';
 import { ref, remove, runTransaction, set, push } from 'firebase/database';
-import { useFollow, useUserProfile } from '../hooks/useFollow';
-import CommentSection from './CommentSection';
+import { useFollow, useUserProfile } from '../hooks/useFollow.ts';
+import CommentSection from './CommentSection.tsx';
 import { motion } from 'framer-motion';
-import { iconUrls } from '../data/icons';
-import EmbeddedPost from './EmbeddedPost';
-import { addVibePoints, VibePoints } from '../data/gamification';
-import AvatarWithBorder from './AvatarWithBorder';
+import { iconUrls } from '../data/icons.ts';
+import EmbeddedPost from './EmbeddedPost.tsx';
+import { addVibePoints, VibePoints } from '../data/gamification.ts';
+import AvatarWithBorder from './AvatarWithBorder.tsx';
 
 interface PostComponentProps {
   post: Post;

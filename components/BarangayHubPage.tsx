@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { auth, db } from '../firebase';
+import { auth, db } from '../firebase.ts';
 import { ref, query, orderByChild, equalTo, onValue, get, set } from 'firebase/database';
-import type { Post, UserProfile, View } from '../types';
-import PostComponent from './Post';
-import BarangayHubSkeleton from './BarangayHubSkeleton';
-import Multiavatar from './Multiavatar';
+import type { Post, UserProfile, View } from '../types.ts';
+import PostComponent from './Post.tsx';
+import BarangayHubSkeleton from './BarangayHubSkeleton.tsx';
+import Multiavatar from './Multiavatar.tsx';
 import { motion } from 'framer-motion';
-import { iconUrls } from '../data/icons';
+import { iconUrls } from '../data/icons.ts';
 
 // Badge Awarding Logic
 const checkAndAwardBadge = async (userId: string, badgeId: string) => {

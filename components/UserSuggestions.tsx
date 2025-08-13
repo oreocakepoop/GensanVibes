@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { db, auth } from '../firebase';
+import { db, auth } from '../firebase.ts';
 import { ref, onValue } from 'firebase/database';
-import UserListItem, { UserListItemSkeleton } from './UserListItem';
-import type { UserProfile } from '../types';
+import UserListItem, { UserListItemSkeleton } from './UserListItem.tsx';
+import type { UserProfile } from '../types.ts';
 
 // Helper to shuffle and slice an array
 const shuffleAndSlice = <T,>(array: T[], count: number): T[] => {

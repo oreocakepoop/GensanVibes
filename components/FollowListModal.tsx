@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import UserListItem from './UserListItem';
-import { iconUrls } from '../data/icons';
+import UserListItem from './UserListItem.tsx';
+import { iconUrls } from '../data/icons.ts';
 
 const backdropVariants: Variants = {
   visible: { opacity: 1 },

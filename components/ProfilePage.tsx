@@ -1,21 +1,21 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { auth, db } from '../firebase';
+import { auth, db } from '../firebase.ts';
 import { ref, query, orderByChild, equalTo, onValue, get } from 'firebase/database';
-import type { Post, UserProfile, View, Badge } from '../types';
-import PostComponent from './Post';
-import ProfileSkeleton from './ProfileSkeleton';
-import { useFollow } from '../hooks/useFollow';
+import type { Post, UserProfile, View, Badge } from '../types.ts';
+import PostComponent from './Post.tsx';
+import ProfileSkeleton from './ProfileSkeleton.tsx';
+import { useFollow } from '../hooks/useFollow.ts';
 import { AnimatePresence, motion } from 'framer-motion';
-import EditAvatarModal from './EditAvatarModal';
-import EditProfileModal from './EditProfileModal';
-import FollowListModal from './FollowListModal';
-import { iconUrls } from '../data/icons';
-import { badges as allBadges } from '../data/badges';
-import BadgeIcon from './BadgeIcon';
-import AvatarWithBorder from './AvatarWithBorder';
-import ProfileBorders from './ProfileBorders';
+import EditAvatarModal from './EditAvatarModal.tsx';
+import EditProfileModal from './EditProfileModal.tsx';
+import FollowListModal from './FollowListModal.tsx';
+import { iconUrls } from '../data/icons.ts';
+import { badges as allBadges } from '../data/badges.ts';
+import BadgeIcon from './BadgeIcon.tsx';
+import AvatarWithBorder from './AvatarWithBorder.tsx';
+import ProfileBorders from './ProfileBorders.tsx';
 
 
 interface ProfilePageProps {

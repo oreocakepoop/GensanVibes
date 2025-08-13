@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { auth } from '../firebase';
+import { auth } from '../firebase.ts';
 import { signOut } from 'firebase/auth';
-import type { UserProfile, View } from '../types';
+import type { UserProfile, View } from '../types.ts';
 import { motion, AnimatePresence } from 'framer-motion';
-import Multiavatar from './Multiavatar';
-import { useUserProfile } from '../hooks/useFollow';
-import { useUnreadNotificationsCount } from '../hooks/useNotifications';
-import NotificationsPanel from './NotificationsPanel';
-import { iconUrls } from '../data/icons';
+import Multiavatar from './Multiavatar.tsx';
+import { useUserProfile } from '../hooks/useFollow.ts';
+import { useUnreadNotificationsCount } from '../hooks/useNotifications.ts';
+import NotificationsPanel from './NotificationsPanel.tsx';
+import { iconUrls } from '../data/icons.ts';
 
 
 interface HeaderProps {

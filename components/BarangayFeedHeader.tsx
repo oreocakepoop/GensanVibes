@@ -1,13 +1,13 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { db } from '../firebase';
+import { db } from '../firebase.ts';
 import { ref, query, orderByChild, equalTo, onValue } from 'firebase/database';
-import type { UserProfile, View } from '../types';
-import BarangayFeedHeaderSkeleton from './BarangayFeedHeaderSkeleton';
-import Multiavatar from './Multiavatar';
+import type { UserProfile, View } from '../types.ts';
+import BarangayFeedHeaderSkeleton from './BarangayFeedHeaderSkeleton.tsx';
+import Multiavatar from './Multiavatar.tsx';
 import { motion } from 'framer-motion';
-import { iconUrls } from '../data/icons';
+import { iconUrls } from '../data/icons.ts';
 
 interface BarangayFeedHeaderProps {
   barangayName: string;

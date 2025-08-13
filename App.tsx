@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { auth } from './firebase';
+import { auth } from './firebase.ts';
 import { onAuthStateChanged, User } from 'firebase/auth';
 
-import MainApp from './MainApp';
-import LoginPage from './components/LoginPage';
-import RegisterPage from './components/RegisterPage';
-import AppSkeleton from './components/AppSkeleton';
+import MainApp from './MainApp.tsx';
+import LoginPage from './components/LoginPage.tsx';
+import RegisterPage from './components/RegisterPage.tsx';
+import AppSkeleton from './components/AppSkeleton.tsx';
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);

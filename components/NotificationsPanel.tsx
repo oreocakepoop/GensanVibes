@@ -1,12 +1,12 @@
 
 import React, { useEffect, useRef } from 'react';
-import { auth, db } from '../firebase';
+import { auth, db } from '../firebase.ts';
 import { ref, update } from 'firebase/database';
-import { useNotifications } from '../hooks/useNotifications';
-import NotificationItem from './NotificationItem';
-import type { View } from '../types';
+import { useNotifications } from '../hooks/useNotifications.ts';
+import NotificationItem from './NotificationItem.tsx';
+import type { View } from '../types.ts';
 import { motion, AnimatePresence } from 'framer-motion';
-import { iconUrls } from '../data/icons';
+import { iconUrls } from '../data/icons.ts';
 
 interface NotificationsPanelProps {
     isOpen: boolean;

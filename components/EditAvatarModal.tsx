@@ -1,11 +1,11 @@
 
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { db } from '../firebase';
+import { db } from '../firebase.ts';
 import { ref, update } from 'firebase/database';
 import { motion, Variants } from 'framer-motion';
-import Multiavatar from './Multiavatar';
-import { iconUrls } from '../data/icons';
+import Multiavatar from './Multiavatar.tsx';
+import { iconUrls } from '../data/icons.ts';
 
 interface EditAvatarModalProps {
   isOpen: boolean;

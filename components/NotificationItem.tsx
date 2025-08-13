@@ -1,9 +1,9 @@
 
 import React from 'react';
-import type { Notification, View } from '../types';
-import { NotificationType } from '../types';
-import { useUserProfile } from '../hooks/useFollow';
-import Multiavatar from './Multiavatar';
+import type { Notification, View } from '../types.ts';
+import { NotificationType } from '../types.ts';
+import { useUserProfile } from '../hooks/useFollow.ts';
+import Multiavatar from './Multiavatar.tsx';
 import { motion } from 'framer-motion';
 
 interface NotificationItemProps {

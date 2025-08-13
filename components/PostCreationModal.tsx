@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { auth, db } from '../firebase';
+import { auth, db } from '../firebase.ts';
 import { ref, set, push, runTransaction, get } from 'firebase/database';
-import { PostType, UserProfile, Post, Notification, NotificationType, View, Badge } from '../types';
+import { PostType, UserProfile, Post, Notification, NotificationType, View, Badge } from '../types.ts';
 import { motion, Variants } from 'framer-motion';
-import Multiavatar from './Multiavatar';
-import { useUserProfile } from '../hooks/useFollow';
-import EmbeddedPost from './EmbeddedPost';
-import { iconUrls } from '../data/icons';
-import { badges as allBadges } from '../data/badges';
-import { addVibePoints, VibePoints } from '../data/gamification';
+import Multiavatar from './Multiavatar.tsx';
+import { useUserProfile } from '../hooks/useFollow.ts';
+import EmbeddedPost from './EmbeddedPost.tsx';
+import { iconUrls } from '../data/icons.ts';
+import { badges as allBadges } from '../data/badges.ts';
+import { addVibePoints, VibePoints } from '../data/gamification.ts';
 
 // Badge Awarding Logic
 const checkAndAwardBadge = async (userId: string, badgeId: string) => {

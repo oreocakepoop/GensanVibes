@@ -1,8 +1,8 @@
 
 import { useState, useEffect } from 'react';
-import { db } from '../firebase';
+import { db } from '../firebase.ts';
 import { ref, onValue } from 'firebase/database';
-import type { Post } from '../types';
+import type { Post } from '../types.ts';
 
 export const usePost = (postId?: string): [Post | null, boolean] => {
     const [post, setPost] = useState<Post | null>(null);

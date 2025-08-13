@@ -1,6 +1,6 @@
 
 import React from 'react';
-import PostSkeleton from './PostSkeleton';
+import PostSkeleton from './PostSkeleton.tsx';
 
 const VibeSetterSkeleton: React.FC = () => (
     <div className="flex-shrink-0 w-32 flex flex-col items-center gap-2 p-3">

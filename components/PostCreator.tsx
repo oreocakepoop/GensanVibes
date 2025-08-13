@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import { PostType, UserProfile } from '../types';
-import { auth } from '../firebase';
+import { PostType, UserProfile } from '../types.ts';
+import { auth } from '../firebase.ts';
 import { motion } from 'framer-motion';
-import Multiavatar from './Multiavatar';
-import { useUserProfile } from '../hooks/useFollow';
-import { iconUrls } from '../data/icons';
+import Multiavatar from './Multiavatar.tsx';
+import { useUserProfile } from '../hooks/useFollow.ts';
+import { iconUrls } from '../data/icons.ts';
 
 
 const postTypes = [

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import PostSkeleton from './PostSkeleton';
+import PostSkeleton from './PostSkeleton.tsx';
 
 const ProfileSkeleton: React.FC = () => {
   return (

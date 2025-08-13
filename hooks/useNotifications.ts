@@ -1,8 +1,8 @@
 
 import { useState, useEffect } from 'react';
-import { db } from '../firebase';
+import { db } from '../firebase.ts';
 import { ref, onValue, query, orderByChild, equalTo } from 'firebase/database';
-import type { Notification } from '../types';
+import type { Notification } from '../types.ts';
 
 export const useNotifications = (userId?: string): [Notification[], boolean] => {
     const [notifications, setNotifications] = useState<Notification[]>([]);

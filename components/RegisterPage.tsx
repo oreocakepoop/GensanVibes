@@ -1,9 +1,9 @@
 
 import React, { useState } from 'react';
-import { auth, db } from '../firebase';
+import { auth, db } from '../firebase.ts';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ref, set } from 'firebase/database';
-import { locations } from '../data/locations';
+import { locations } from '../data/locations.ts';
 
 interface RegisterPageProps {
   onSwitchToLogin: () => void;

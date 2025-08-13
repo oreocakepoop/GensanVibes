@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import Header from './components/Header';
-import Dashboard from './components/Dashboard';
-import Sidebar from './components/Sidebar';
-import PostCreationModal from './components/PostCreationModal';
-import ProfilePage from './components/ProfilePage';
-import SinglePostPage from './components/SinglePostPage';
-import EventsPage from './components/EventsPage';
-import EventDetailPage from './components/EventDetailPage';
-import BarangayChatPage from './components/BarangayChatPage';
-import BarangayHubPage from './components/BarangayHubPage';
-import EventCreationModal from './components/EventCreationModal';
-import FoodTripPlannerPage from './components/FoodTripPlannerPage';
-import DMPage from './components/DMPage';
-import DMConversationPage from './components/DMConversationPage';
-import { Post, PostType, View } from './types';
+import Header from './components/Header.tsx';
+import Dashboard from './components/Dashboard.tsx';
+import Sidebar from './components/Sidebar.tsx';
+import PostCreationModal from './components/PostCreationModal.tsx';
+import ProfilePage from './components/ProfilePage.tsx';
+import SinglePostPage from './components/SinglePostPage.tsx';
+import EventsPage from './components/EventsPage.tsx';
+import EventDetailPage from './components/EventDetailPage.tsx';
+import BarangayChatPage from './components/BarangayChatPage.tsx';
+import BarangayHubPage from './components/BarangayHubPage.tsx';
+import EventCreationModal from './components/EventCreationModal.tsx';
+import FoodTripPlannerPage from './components/FoodTripPlannerPage.tsx';
+import DMPage from './components/DMPage.tsx';
+import DMConversationPage from './components/DMConversationPage.tsx';
+import { Post, PostType, View } from './types.ts';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const MainApp: React.FC = () => {

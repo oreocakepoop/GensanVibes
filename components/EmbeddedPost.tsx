@@ -1,10 +1,10 @@
 
 import React from 'react';
-import type { Post, View } from '../types';
-import { PostType } from '../types';
-import { usePost } from '../hooks/usePost';
-import { useUserProfile } from '../hooks/useFollow';
-import Multiavatar from './Multiavatar';
+import type { Post, View } from '../types.ts';
+import { PostType } from '../types.ts';
+import { usePost } from '../hooks/usePost.ts';
+import { useUserProfile } from '../hooks/useFollow.ts';
+import Multiavatar from './Multiavatar.tsx';
 import { motion } from 'framer-motion';
 
 interface EmbeddedPostProps {
